@@ -756,11 +756,9 @@ function readDateTimeOffset(buf: Buffer, offset: number, dataLength: number, sca
   ({ offset } = readUInt16LE(buf, offset));
 
   let date;
-  if (useUTC) {
-    date = new Date(Date.UTC(2000, 0, days - 730118, 0, 0, 0, +time)) as DateWithNanosecondsDelta;
-  } else {
+
     date = new Date(2000, 0, days - 730118, time.getHours(), time.getMinutes(), time.getSeconds(), time.getMilliseconds()) as DateWithNanosecondsDelta;
-  }
+
   Object.defineProperty(date, 'nanosecondsDelta', {
     enumerable: false,
     value: time.nanosecondsDelta
