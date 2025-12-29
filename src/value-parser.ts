@@ -746,8 +746,8 @@ function readDateTime2(buf: Buffer, offset: number, dataLength: number, scale: n
 }
 
 function readDateTimeOffset(buf: Buffer, offset: number, dataLength: number, scale: number): Result<DateWithNanosecondsDelta> {
+  console.log ('buf: '+JSON.stringify(buf))
   console.log('offset: '+JSON.stringify(offset));
-
   let time;
   ({ offset, value: time } = readTime(buf, offset, dataLength - 5, scale, false));
   console.log('time: '+JSON.stringify(time));
