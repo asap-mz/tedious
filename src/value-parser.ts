@@ -758,7 +758,7 @@ function readDateTimeOffset(buf: Buffer, offset: number, dataLength: number, sca
   ({ offset } = readUInt16LE(buf, offset));
   console.log('new offset: '+JSON.stringify(offset));
   const date = new Date(Date.UTC(2000, 0, days - 730118, 0, 0, 0, +time)) as DateWithNanosecondsDelta;
-  console.log(JSON.stringify(date))
+  console.log('date: '+JSON.stringify(date))
   Object.defineProperty(date, 'nanosecondsDelta', {
     enumerable: false,
     value: time.nanosecondsDelta
