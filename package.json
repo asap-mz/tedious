@@ -93,7 +93,7 @@
     "test-all": "mocha --forbid-only test/unit/ test/unit/token/ test/unit/tracking-buffer test/integration/",
     "build:types": "tsc --project tsconfig.build-types.json",
     "build": "rimraf lib && babel src --out-dir lib --extensions .js,.ts && npm run build:types",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "semantic-release": "semantic-release"
   },
   "babel": {
