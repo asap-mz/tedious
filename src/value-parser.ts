@@ -746,16 +746,19 @@ function readDateTime2(buf: Buffer, offset: number, dataLength: number, scale: n
 }
 
 function readDateTimeOffset(buf: Buffer, offset: number, dataLength: number, scale: number): Result<DateWithNanosecondsDelta> {
+  console.log(JSON.stringify(offset));
+
   let time;
   ({ offset, value: time } = readTime(buf, offset, dataLength - 5, scale, false));
-
+  console.log(JSON.stringify(time));
   let days;
   ({ offset, value: days } = readUInt24LE(buf, offset));
-
+  console.log(JSON.stringify(days));
   // time offset?
-  //({ offset } = readUInt16LE(buf, offset));
-
+  ({ offset } = readUInt16LE(buf, offset));
+  console.log(JSON.stringify(offset));
   const date = new Date(Date.UTC(2000, 0, days - 730118, 0, 0, 0, +time)) as DateWithNanosecondsDelta;
+  console.log(JSON.stringify(date))
   Object.defineProperty(date, 'nanosecondsDelta', {
     enumerable: false,
     value: time.nanosecondsDelta
