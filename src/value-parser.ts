@@ -747,7 +747,7 @@ function readDateTime2(buf: Buffer, offset: number, dataLength: number, scale: n
 
 function readDateTimeOffset(buf: Buffer, offset: number, dataLength: number, scale: number): Result<DateWithNanosecondsDelta> {
   let time;
-  ({ offset, value: time } = readTime(buf, offset, dataLength - 5, scale, true));
+  ({ offset, value: time } = readTime(buf, offset, dataLength - 5, scale, false));
 
   let days;
   ({ offset, value: days } = readUInt24LE(buf, offset));
